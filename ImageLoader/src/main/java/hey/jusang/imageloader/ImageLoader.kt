@@ -6,7 +6,11 @@ class ImageLoader {
     companion object {
         @Volatile private var INSTANCE: InternalLoader? = null
 
-        fun getInstance(context: Context): InternalLoader {
+        fun with(context:Context): RequestBuilder {
+            return RequestBuilder(context)
+        }
+
+        internal fun getInstance(context: Context): InternalLoader {
             return INSTANCE ?: synchronized(this) {
                 INSTANCE ?: buildInternalLoader(context).also { INSTANCE = it }
             }

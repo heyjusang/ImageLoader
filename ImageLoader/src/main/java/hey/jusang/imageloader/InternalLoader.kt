@@ -36,7 +36,9 @@ class InternalLoader constructor(
         mainThreadHandler = HandlerCompat.createAsync(Looper.getMainLooper())
     }
 
-    fun setImageFromUrl(url: String, imageView: ImageView) {
+    internal fun doLoad(requestBuilder: RequestBuilder, imageView: ImageView) {
+        val url: String = requestBuilder.url!!
+
         if (setImageFromMemoryCache(url, imageView)) {
             return
         }

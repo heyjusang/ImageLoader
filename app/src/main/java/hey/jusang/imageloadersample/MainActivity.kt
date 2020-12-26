@@ -14,6 +14,8 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        ImageLoader.getInstance(this).setImageFromUrl("https://picsum.photos/id/237/200/200", binding.imageView)
+        ImageLoader.with(this)
+            .load("https://picsum.photos/id/237/200/200")
+            .into(binding.imageView)
     }
 }
