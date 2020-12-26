@@ -45,7 +45,17 @@ Step 2. Add the dependency:
 Usage
 -----
 ```java
-ImageLoader.getInstance(context).setImageFromUrl(url, imageView)
+// Basic Usage
+ImageLoader.with(context)
+  .load(url)
+  .into(imageView)
+
+// Add placeholder image
+ImageLoader.with(context)
+  .load(url)
+  .thumbnail(R.drawable.thumbnail)
+  .into(imageView)
+  
 ```
 
 Features
