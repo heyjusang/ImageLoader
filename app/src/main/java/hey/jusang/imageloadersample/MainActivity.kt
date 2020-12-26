@@ -16,6 +16,7 @@ class MainActivity : AppCompatActivity() {
 
         ImageLoader.with(this)
             .load("https://picsum.photos/id/237/200/200")
+            .thumbnail(R.drawable.thumbnail)
             .into(binding.imageView)
     }
 }

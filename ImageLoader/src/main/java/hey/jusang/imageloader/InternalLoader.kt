@@ -38,12 +38,13 @@ class InternalLoader constructor(
 
     internal fun doLoad(requestBuilder: RequestBuilder, imageView: ImageView) {
         val url: String = requestBuilder.url!!
+        val thumbnail: Int? = requestBuilder.thumbnailResId
 
         if (setImageFromMemoryCache(url, imageView)) {
             return
         }
 
-        setImageFromDiskCacheAndRemote(url, imageView)
+        setImageFromDiskCacheAndRemote(url, imageView, thumbnail)
     }
 
     private fun setImageFromMemoryCache(url: String, imageView: ImageView): Boolean {
@@ -54,13 +55,14 @@ class InternalLoader constructor(
         return true
     }
 
-    private fun setImageFromDiskCacheAndRemote(url:String, imageView: ImageView) {
+    private fun setImageFromDiskCacheAndRemote(url:String, imageView: ImageView, thumbnail: Int?) {
         val shouldFetch: Boolean = validator.shouldFetch(url)
 
         validator.set(url, imageView)
 
-        // TODO : thumbnail
-        // imageView.setImageResource(R.drawable.thumbnail)
+        if (thumbnail != null) {
+            imageView.setImageResource(thumbnail)
+        }
 
         if (shouldFetch) {
             executorService.execute(LoadBitmap(url))

@@ -7,9 +7,15 @@ class RequestBuilder constructor(
     private val context: Context
 ) {
     internal var url: String? = null
+    internal var thumbnailResId: Int? = null
 
     fun load(url: String): RequestBuilder {
         this.url = url
+        return this
+    }
+
+    fun thumbnail(resId: Int): RequestBuilder {
+        this.thumbnailResId = resId
         return this
     }
 
