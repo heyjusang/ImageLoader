@@ -19,7 +19,7 @@ allprojects {
 Step 2. Add the dependency:
 ```gradle	
 dependencies {
-  implementation 'com.github.heyjusang:ImageLoader:Tag'
+  implementation 'com.github.heyjusang:ImageLoader:1.0.1-alpha'
 }
 ```
 
@@ -38,7 +38,7 @@ Step 2. Add the dependency:
 <dependency>
   <groupId>com.github.heyjusang</groupId>
   <artifactId>ImageLoader</artifactId>
-  <version>Tag</version>
+  <version>1.0.1-alpha</version>
 </dependency>
 ```
 
